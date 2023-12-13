@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+</head>
+<body>
+    <div class="chat-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+          <h1>kirim pesan</h1>
+      
+          <textarea type="text" id="chatbox" style="height: 40vh;width: 50%;" readonly></textarea><br><br>
+          <input type="text" id="uname" placeholder="Username">
+          <input type="text" id="comment" placeholder="Komentar"><br><br>
+          <button type="submit" class="btn" id="send">kirim</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">batal</button>
+        </form>
+      </div>
+</body>
+
+<script>
+    $(document).ready(function(){
+        setInterval(read, 10);
+        function read(){
+            $("#chatbox").load("chat.txt");
+        };
+
+        $("form").submit(function (event) {
+            var formData = {
+                uname: $("#uname").val(),
+                comment: $("#comment").val(),
+            };
+
+            $.ajax({
+                type: "GET",
+                url: "write.php",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            })
+            
+            event.preventDefault();
+            read();
+            $("#comment").val('');
+        });
+
+        read();
+
+
+    });
+</script>
+
+</html>

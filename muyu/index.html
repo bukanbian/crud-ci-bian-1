@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coba</title>
+</head>
+<body>
+    <center>
+        <h1>SELAMAT DATANG</h1>
+        <hr>
+        <button id="home">HOME</button>
+        <button id="data">DATA</button>
+        <button id="about">ABOUT</button>
+        <button id="chat">CHAT</button>
+        <hr>
+        <div id="konten"></div>
+    </center>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        $("#home").click(function(){
+            $("#konten").load("home.html");
+        });
+        $("#data").click(function(){
+            $("#konten").load("data.html");
+        });
+        $("#about").click(function(){
+            $("#konten").load("about.html");
+        });
+        $("#chat").click(function(){
+            $("#konten").load("chat.html");
+        });
+
+    });
+    </script>
+</html>
